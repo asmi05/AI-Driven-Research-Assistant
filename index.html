@@ -22,9 +22,9 @@ mount(
     requirements: [],
     entrypoint: "streamlit_app.py",
     files: {
-"streamlit_app.py": `# In app.py
+"streamlit_app.py": '
 import streamlit as st
-from main import run_research_agent #'
+from main import run_research_agent 
 
 st.title("AI-Driven Research Assistant")
 
@@ -49,7 +49,7 @@ if st.button("Research"):
                     st.write(f"[PDF Link]({suggestion['pdf_url']})")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
-`,
+',
 
 },
   },
