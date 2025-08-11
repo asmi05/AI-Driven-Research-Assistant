@@ -3,60 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Stlite app</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.86.0/build/stlite.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title> AI Research Assistant</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@0.86.0/build/stlite.css" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module">
-import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.86.0/build/stlite.js"
-mount(
-  {
-    requirements: [],
-    entrypoint: "streamlit_app.py",
-    files: {
-"streamlit_app.py": `# In app.py
+      import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@0.86.0/build/stlite.js";
+      mount(
+        {
+          requirements: ["streamlit"], // Minimal requirements
+          entrypoint: "streamlit_app.py",
+          files: {
+            "streamlit_app.py": `
 import streamlit as st
-from main import run_research_agent
 
-st.title("AI-Driven Research Assistant")
-
+st.title("AI-Driven Research Assistant (Demo)")
 query = st.text_input("Enter research query:", placeholder="e.g., agentic AI applications")
 if st.button("Research"):
     if not query.strip():
         st.error("Please enter a valid query.")
     else:
-        with st.spinner("Searching and summarizing..."):
-            try:
-                result = run_research_agent(query)
-                st.subheader("Search Results")
-                for paper in result['results']:
-                    st.write(f"**Title**: {paper['title']}")
-                    st.write(f"**Summary**: {paper['short_summary']}")
-                    st.write(f"**Citation**: {paper['citation']}")
-                    st.write(f"[PDF Link]({paper['pdf_url']})")
-                    st.write("---")
-                st.subheader("Suggested Related Papers")
-                for suggestion in result['suggestions']:
-                    st.write(f"**Title**: {suggestion['title']}")
-                    st.write(f"[PDF Link]({suggestion['pdf_url']})")
-            except Exception as e:
-                st.error(f"An error occurred: {str(e)}")
-`,
-
-},
-  },
-  document.getElementById("root")
-)
-
+        st.success(f"Search for '{query}' would be processed here (simplified for Stlite).")
+        st.write("Note: Full functionality requires server-side deployment due to unsupported libraries.")
+            `,
+          },
+        },
+        document.getElementById("root")
+      );
     </script>
   </body>
-  <!-- Generated from Stlite Sharing (https://edit.share.stlite.net/), and the source version is a4241279ee0f111a011005427d2192f9a1f33117 -->
 </html>
