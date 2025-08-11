@@ -1,0 +1,27 @@
+# In app.py
+import streamlit as st
+from main import run_research_agent
+
+st.title("AI-Driven Research Assistant")
+
+query = st.text_input("Enter research query:", placeholder="e.g., agentic AI applications")
+if st.button("Research"):
+    if not query.strip():
+        st.error("Please enter a valid query.")
+    else:
+        with st.spinner("Searching and summarizing..."):
+            try:
+                result = run_research_agent(query)
+                st.subheader("Search Results")
+                for paper in result['results']:
+                    st.write(f"**Title**: {paper['title']}")
+                    st.write(f"**Summary**: {paper['short_summary']}")
+                    st.write(f"**Citation**: {paper['citation']}")
+                    st.write(f"[PDF Link]({paper['pdf_url']})")
+                    st.write("---")
+                st.subheader("Suggested Related Papers")
+                for suggestion in result['suggestions']:
+                    st.write(f"**Title**: {suggestion['title']}")
+                    st.write(f"[PDF Link]({suggestion['pdf_url']})")
+            except Exception as e:
+                st.error(f"An error occurred: {str(e)}")
