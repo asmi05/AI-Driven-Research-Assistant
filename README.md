@@ -1,12 +1,6 @@
-#The following environment is selected: \.venv\Scripts\python.exe
-#pip install requests beautifulsoup4 scrapy transformers torch sentence-transformers faiss-cpu bibtexparser
-#pip install scholarly
-#pip install huggingface_hub[hf_xet]
-# In a file test_setup.py
-#pip install streamlit requests beautifulsoup4 scrapy transformers torch sentence-transformers faiss-cpu bibtexparser
+The AI-Driven Research Assistant. 
 
-import requests
-from bs4 import BeautifulSoup
-from transformers import pipeline
+This is an agentic AI application that conducts literature reviews, summarizes academic papers, suggests relevant sources based on user queries, and handles citations in formats like APA or MLA. MLA uses the author's last name and page number (e.g., Smith 25). APA uses the author's last name and the year of publication (e.g., Smith, 2023). MLA (Modern Language Association) and APA (American Psychological Association) are two widely used citation styles in academic writing. MLA is primarily used in the humanities, such as literature and language studies, while APA is commonly used in social sciences, psychology, and education.
 
-print("Libraries imported successfully!")
+Here we have used open-source tools and libraries. 
+
